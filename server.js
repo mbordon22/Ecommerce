@@ -37,10 +37,37 @@ app.get("/", (req, res) => {
 
 /* ------------------------------------------------Pantalla de PRODUCTOS---------------------------------------- */
 app.get("/productos", (req, res) => {
+    let resultado = productos;
+
+    if(req.query.categoria){
+        const categoria = req.query.categoria;
+        resultado = resultado.filter(element => element.categoria === categoria);
+    }
+
     res.render("productos", {
         titulo : "Productos",
-        productos
+        productos: resultado,
+        tituloProductos : "Todos los Productos"
     })
+})
+
+
+/* ------------------------------------------------Pantalla de DETALLE PRODUCTO---------------------------------------- */
+app.get("/producto", (req, res) => {
+    const idProducto = parseInt(req.query.id);
+    let resultado = productos;
+    if(idProducto > 0){
+
+        resultado = resultado.filter(element => element.id === idProducto);
+
+        res.render("producto", {
+            titulo : resultado[0].nombre,
+            producto: resultado[0],
+        })
+
+        console.log(resultado);
+    }
+    
 })
 
 

@@ -105,25 +105,13 @@ a:hover{
 
 /* aside */
 .aside{
-    background-color: red;
+    /* background-color: red; */
+    padding-top: 0;
 }
 
 .aside div{
     height: 50px;
     
-}
-
-/* contenedor-productos */
-.contenedor-tarjeta{
-    background-color: green;
-    padding: 15px ;
-}
-
-.contenedor-tarjeta .row > .col-md-4{
-    height: 180px;
-    background-color: red;
-    border: 1px solid blue;
-    padding: 5px;
 }
 
 /*Footer*/
@@ -199,7 +187,7 @@ a:hover{
         align-items: center;
     }
     .contenedor-productos .tarjeta-producto{
-        flex: 0 0 calc(33.3% - 15px);
+        flex: 0 0 calc(25% - 15px);
     }
 }
 .tarjeta-producto-imagen{
