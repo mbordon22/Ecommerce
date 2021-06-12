@@ -51,55 +51,34 @@
 <div class="container my-4">
   <div class="row justify-content-center">
     <div class="col-12 mb-4">
-      <a class="titulo-productos">Computadoras de Escritorio</a>
+      <h3 class="titulo-productos">Computadoras de Escritorio</h3>
     </div>
   </div>
   <div class="contenedor-productos">
-    <div class="tarjeta-producto">
-      <div class="tarjeta-producto-imagen">
-        <img src="imagenes/producto1.jpg" alt="" />
-      </div>
-      <div class="tarjeta-producto-contenido">
-        <div class="descuento">
-          <span class="descuento">5% OFF</span>
+    {{#each productos}}
+      <a href="/producto?id={{this.id}}">
+        <div class="tarjeta-producto">
+          <div class="tarjeta-producto-imagen">
+            <img src="imagenes/{{this.foto}}" alt="" />
+          </div>
+          <div class="tarjeta-producto-contenido">
+            <div class="descuento">
+              <span class="descuento">{{this.descuento}}% OFF</span>
+            </div>
+            <div class="info">
+              <p class="precio">${{this.precio}}</p>
+              <p class="financiacion">{{this.financiacion}}</p>
+              <p class="nombre">{{this.nombre}}</p>
+            </div>
+          </div>
         </div>
-        <div class="info">
-          <p class="precio">$58.600</p>
-          <p class="financiacion">18 x $3222.22 Sin Interes</p>
-          <p class="nombre">PC de Escritorio Armada I58 10ma generación</p>
-        </div>
-      </div>
+      </a>
+    {{/each}}
+  </div>
+  <div class="row justify-content-end">
+    <div class="col-3 d-flex justify-content-end">
+      <a href="/productos?categoria=pc_escritorio" class="link-ver-mas">Ver todos
+        <i class="fas fa-chevron-right"></i></a>
     </div>
-    <div class="tarjeta-producto">
-      <div class="tarjeta-producto-imagen">
-        <img src="imagenes/producto1.jpg" alt="" />
-      </div>
-      <div class="tarjeta-producto-contenido">
-        <div class="descuento">
-          <span class="descuento">5% OFF</span>
-        </div>
-        <div class="info">
-          <p class="precio">$58.600</p>
-          <p class="financiacion">18 x $3222.22 Sin Interes</p>
-          <p class="nombre">PC de Escritorio Armada I58 10ma generación</p>
-        </div>
-      </div>
-    </div>
-    <div class="tarjeta-producto">
-      <div class="tarjeta-producto-imagen">
-        <img src="imagenes/producto1.jpg" alt="" />
-      </div>
-      <div class="tarjeta-producto-contenido">
-        <div class="descuento">
-          <span class="descuento">5% OFF</span>
-        </div>
-        <div class="info">
-          <p class="precio">$58.600</p>
-          <p class="financiacion">18 x $3222.22 Sin Interes</p>
-          <p class="nombre">PC de Escritorio Armada I58 10ma generación</p>
-        </div>
-      </div>
-    </div>
-    
   </div>
 </div>

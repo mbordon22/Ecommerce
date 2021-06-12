@@ -24,6 +24,14 @@ img {
     max-width: 100%;
 }
 
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: black;
+}
+
 /* Menu de navegacion */
 .navbar-nav li{
     padding: 15px;
@@ -161,10 +169,6 @@ img {
     font-weight: 600;
     text-decoration: none;
     font-size: 20px;
-    cursor: pointer;
-}
-.titulo-productos:hover{
-    color: #444343;
 }
 
 .contenedor-productos{
