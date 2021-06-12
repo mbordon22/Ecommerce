@@ -1,0 +1,24 @@
+{
+  "name": "retrogames",
+  "version": "1.0.0",
+  "description": "Tienda de consolas y juegos retos",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbordon22/RetroGames.git"
+  },
+  "author": "Maximiliano Rivadeneira Bordón",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mbordon22/RetroGames/issues"
+  },
+  "homepage": "https://github.com/mbordon22/RetroGames#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2"
+  }
+}

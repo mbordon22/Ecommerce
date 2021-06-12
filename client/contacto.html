@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<header class="site-header" id="site-header">
+        <div class="barra">
+            <div class="logo">
+                <a href="index.php">GameForAll</a>
+            </div>
+
+            <div class="menu-movil" id="menu-movil">
+                <div class="boton-menu" id="boton-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+
+            <nav class="navegacion-principal" id="navegacion-principal">
+                <a href="index.php">Inicio</a>
+                <a href="#">Catálogo</a>
+                <a href="#">Emuladores</a>
+                <a href="#">ISOs</a>
+                <a href="contacto.php">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="contenedor seccion">
+        <h1>Contacto</h1>
+    </div>
+
+    <div class="contenedor">
+        <form action="respuesta.php" method="POST">
+            <div class="form-group">
+                <label for="nombre">Nombre: </label>
+                <input type="text" name="nombre" id="nombre" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="apellido">Apellido: </label>
+                <input type="text" name="apellido" id="apellido" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="email">EMail: </label>
+                <input type="email" id="email" name="email" autocomplete="nope">
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">Telefono: </label>
+                <input type="tel" name="telefono" id="telefono" autocomplete="nope">
+            </div>
+
+            <input type="submit" name="btnEnviar" id="btnEnviar" class="boton">
+
+        </form>
+    </div>
+</body>
+</html>
