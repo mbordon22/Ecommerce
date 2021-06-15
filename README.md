@@ -1,2 +1,2 @@
 # Ecommerce
-Tienda de consolas y juegos Retros
+Tienda de Insumos de computación
