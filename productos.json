@@ -14,7 +14,7 @@
     "descuento": 5,
     "precio": 120000,
     "financiacion": "12 x $10.000 Sin Interes",
-    "foto": "producto1.jpg",
+    "foto": "notebook1.webp",
     "categoria" : "notebook"
   },
   {
@@ -37,11 +37,11 @@
   },
   {
     "id": 5,
-    "nombre": "PC de Escritorio Armada I7 11° generación",
+    "nombre": "Memoria RAM DDR2 2GB",
     "descuento": 10,
-    "precio": 95600,
-    "financiacion": "18 x $5311.11 Sin Interes",
-    "foto": "producto1.jpg",
-    "categoria" : "pc_escritorio"
+    "precio": 2309.28,
+    "financiacion": "12 x $210",
+    "foto": "componente1.jpg",
+    "categoria" : "componentePC"
   }
 ]

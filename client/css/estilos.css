@@ -159,43 +159,7 @@ a:hover{
     font-size: 20px;
 }
 
-.contenedor-productos{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-.contenedor-productos .tarjeta-producto{
-    flex: 0 0 80%;
-    padding: 0 15px;
-    margin: 10px 0;
-    border: 1px solid #717171;
-    border-radius: 8px;
-}
-@media (min-width: 768px) {
-    .contenedor-productos{
-        justify-content: space-between;
-        align-items: center;
-    }
-    .contenedor-productos .tarjeta-producto{
-        flex: 0 0 calc(50% - 15px);
-    }
-}
-@media (min-width: 768px) {
-    .contenedor-productos{
-        justify-content: space-between;
-        align-items: center;
-    }
-    .contenedor-productos .tarjeta-producto{
-        flex: 0 0 calc(25% - 15px);
-    }
-}
-.tarjeta-producto-imagen{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.tarjeta-producto-contenido .descuento{
+.card .descuento{
     color: rgb(7, 211, 7);
     font-weight: bold;
 }
@@ -210,7 +174,7 @@ a:hover{
     font-size: 14px;
     text-align: center;
 }
-.tarjeta-producto-contenido .nombre{
+.tarjeta-producto-contenido .info .nombre{
     font-weight: 500;
     font-size: 18px;
     text-align: center;

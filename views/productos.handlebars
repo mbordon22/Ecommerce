@@ -21,8 +21,7 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <div class="contenedor-productos">
-            {{#each productos}}
+          {{!-- {{#each productos}}
               <a href="/producto?id={{this.id}}">
                 <div class="tarjeta-producto">
                   <div class="tarjeta-producto-imagen">
@@ -40,6 +39,21 @@
                   </div>
                 </div>
               </a>
+            {{/each}}--}}
+
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            {{#each productos}}
+              <div class="col">
+                <div class="card h-100">
+                  <img src="imagenes/{{this.foto}}" class="card-img-top" width="200px" height="250px" alt="..." />
+                  <div class="card-body">
+                    <h5 class="card-title">{{this.nombre}}</h5>
+                    <p class="card-text">This is a longer card with supporting
+                      text below as a natural lead-in to additional content.
+                      This content is a little bit longer.</p>
+                  </div>
+                </div>
+              </div>
             {{/each}}
           </div>
         </div>
