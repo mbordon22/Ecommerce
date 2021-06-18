@@ -1,58 +1,39 @@
 {{! PRODUCTOS INICIO }}
 <div class="container mt-5">
-  <div class="row justify-content-md-between my-3">
+  <div class="row justify-content-center justify-content-md-between my-3">
     <div class="d-none d-md-block col-md-2 aside">
       <div class="pt-4 pt-md-0 mb-4 col-12 text-center">
         <h4>Categorias</h4>
       </div>
       <div>
-        <ul>
-          <li><a href="/productos?categoria=pc_escritorio">PC Escritorio</a></li>
-          <li><a href="/productos?categoria=notebook">Notebook</a></li>
-          <li><a href="/productos?categoria=componentePC">Componentes PC</a></li>
+        <ul class="lista-categorias">
+          <li><a href="/productos">Todos los Productos</a></li>
+          <li><a href="/productos?categoria=PC+Escritorio">PC Escritorio</a></li>
+          <li><a href="/productos?categoria=Notebooks">Notebook</a></li>
+          <li><a href="/productos?categoria=Componentes">Componentes PC</a></li>
         </ul>
       </div>
     </div>
-    <div class="col-12 col-md-10 pl-md-5">
+    <div class="col-10 col-md-9 pl-md-5">
       <div class="row">
-        <div class="col-12 text-center">
+        <div class="col-12 text-center mb-4">
           <h3>{{tituloProductos}}</h3>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          {{!-- {{#each productos}}
-              <a href="/producto?id={{this.id}}">
-                <div class="tarjeta-producto">
-                  <div class="tarjeta-producto-imagen">
-                    <img src="imagenes/{{this.foto}}" alt="" />
-                  </div>
-                  <div class="tarjeta-producto-contenido">
-                    <div class="descuento">
-                      <span class="descuento">{{this.descuento}}% OFF</span>
-                    </div>
-                    <div class="info">
-                      <p class="precio">${{this.precio}}</p>
-                      <p class="financiacion">{{this.financiacion}}</p>
-                      <p class="nombre">{{this.nombre}}</p>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            {{/each}}--}}
-
           <div class="row row-cols-1 row-cols-md-3 g-4">
             {{#each productos}}
               <div class="col">
-                <div class="card h-100">
+                <a href="/producto?id={{this.id}}">
+                <div class="card p-2 h-100">
                   <img src="imagenes/{{this.foto}}" class="card-img-top" width="200px" height="250px" alt="..." />
                   <div class="card-body">
-                    <h5 class="card-title">{{this.nombre}}</h5>
-                    <p class="card-text">This is a longer card with supporting
-                      text below as a natural lead-in to additional content.
-                      This content is a little bit longer.</p>
+                    <h5 class="card-title text-center precio">{{this.precio}}</h5>
+                    <p class="card-text text-center">{{this.nombre}}</p>
                   </div>
                 </div>
+                </a>
               </div>
             {{/each}}
           </div>

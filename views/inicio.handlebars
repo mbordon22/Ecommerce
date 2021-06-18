@@ -5,21 +5,21 @@
   data-bs-ride="carousel"
 >
   <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="5000">
+    <div class="carousel-item active" data-bs-interval="3000">
       <img
         src="imagenes/slider1compu.jpg"
         class="d-block w-100 imagen-slider"
         alt="..."
       />
     </div>
-    <div class="carousel-item" data-bs-interval="5000">
+    <div class="carousel-item" data-bs-interval="3000">
       <img
         src="imagenes/slider2compu.jpg"
         class="d-block w-100 imagen-slider"
         alt="..."
       />
     </div>
-    <div class="carousel-item" data-bs-interval="5000">
+    <div class="carousel-item" data-bs-interval="3000">
       <img
         src="imagenes/slider3compu.jpg"
         class="d-block w-100 imagen-slider"
@@ -54,30 +54,35 @@
       <h3 class="titulo-productos">Computadoras de Escritorio</h3>
     </div>
   </div>
-  <div class="contenedor-productos">
-    {{#each productos}}
-      <a href="/producto?id={{this.id}}">
-        <div class="tarjeta-producto">
-          <div class="tarjeta-producto-imagen">
-            <img src="imagenes/{{this.foto}}" alt="" />
-          </div>
-          <div class="tarjeta-producto-contenido">
-            <div class="descuento">
-              <span class="descuento">{{this.descuento}}% OFF</span>
+  <div class="row justify-content-center">
+    <div class="col-10 col-lg-9">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {{#each productos}}
+          <div class="col">
+            <a href="/producto?id={{this.id}}">
+            <div class="card h-100">
+              <img
+                src="imagenes/{{this.foto}}"
+                class="card-img-top"
+                width="200px"
+                height="250px"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title text-center precio">{{this.precio}}</h5>
+                <p class="card-text text-center">{{this.nombre}}</p>
+              </div>
             </div>
-            <div class="info">
-              <p class="precio">${{this.precio}}</p>
-              <p class="financiacion">{{this.financiacion}}</p>
-              <p class="nombre">{{this.nombre}}</p>
-            </div>
+            </a>
           </div>
-        </div>
-      </a>
-    {{/each}}
+        {{/each}}
+      </div>
+    </div>
   </div>
   <div class="row justify-content-end">
-    <div class="col-3 d-flex justify-content-end">
-      <a href="/productos?categoria=pc_escritorio" class="link-ver-mas">Ver todos
+    <div class="col-4 my-3 d-flex justify-content-center">
+      <a href="/productos?categoria=PC+Escritorio" class="link-ver-mas">Ver
+        todos
         <i class="fas fa-chevron-right"></i></a>
     </div>
   </div>

@@ -1,6 +1,7 @@
 const btnSubmit = document.querySelector("#btnSubmit");
+const formLogin = document.querySelector("#formLogin");
 
-btnSubmit.addEventListener("click", function(e) {
+formLogin.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const usuario = document.querySelector("#usuario").value;
@@ -9,9 +10,9 @@ btnSubmit.addEventListener("click", function(e) {
     if (usuario !== "" && pass !== "") {
 
         const data = {
-            usuario : usuario,
-            pass:  pass
-        }
+            usuario,
+            pass
+        };
 
         const xhr = new XMLHttpRequest();
 
@@ -20,7 +21,6 @@ btnSubmit.addEventListener("click", function(e) {
         xhr.onload = function() {
             if(xhr.status == 200){
                 const respuesta = JSON.parse(xhr.responseText);
-                console.log(respuesta);
 
                 const mensajeError = document.querySelector("#mensajeError");
                 if(respuesta.respuesta === "exito"){
@@ -31,10 +31,9 @@ btnSubmit.addEventListener("click", function(e) {
                     mensajeError.style.color = "red";
                 }
             }
-
         }
+        
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify(data));
     }
-
 });

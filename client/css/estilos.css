@@ -18,6 +18,8 @@ body {
     position: relative;
     z-index: 1;
     font-family: 'Montserrat', sans-serif;
+    background: rgb(224,237,237);
+    background: radial-gradient(circle, rgba(224,237,237,1) 0%, rgba(223,234,237,1) 46%, rgba(224,235,236,1) 100%);
 }
 
 img {
@@ -27,6 +29,7 @@ img {
 a{
     text-decoration: none;
     color: black;
+    transition: all .4s ease;
 }
 a:hover{
     color: black;
@@ -123,31 +126,16 @@ a:hover{
 .contenedor-redes a i:hover{
     color: #e1e1e1;
     transform: scale(1.2);
-}   
-
-.accordion .accordion-item:first-child{
-    border-top: 1px solid #e1e1e1;
-}
-
-.accordion .accordion-item:first-child,
-.accordion .accordion-item:last-child{
-    border-bottom: 1px solid #e1e1e1;
-}
-
-.accordion .accordion-item, 
-.accordion .accordion-item .accordion-button{
-    background-color: transparent;
-}
-
-.accordion .accordion-item .accordion-button{
-    color: #e1e1e1;
-}
-
-.accordion .accordion-item .accordion-button:focus{
-    box-shadow: 0 0 0 0;
 }
 
 /* productos */
+.card{
+    transition: all .5s ease;
+}
+.card:hover{
+    border: 1px solid #38f546;
+    filter: opacity(80%);
+}
 .titulo-productos{
     display: block;
     margin: 0;
@@ -163,19 +151,29 @@ a:hover{
     color: rgb(7, 211, 7);
     font-weight: bold;
 }
-.tarjeta-producto-contenido .precio{
-    font-size: 24px;
+
+.card .precio{
+    font-size: 22px;
     text-align: center;
     font-weight: bold;
-    margin-bottom: 0;
+    color: #515151;
 }
-.tarjeta-producto-contenido .financiacion{
-    margin-bottom: 10px;
-    font-size: 14px;
-    text-align: center;
+
+.lista-categorias{
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
-.tarjeta-producto-contenido .info .nombre{
+.lista-categorias li{
+    font-size: 17px;
     font-weight: 500;
-    font-size: 18px;
-    text-align: center;
+    text-align: left;
+    padding: 10px 5px;
+    transition: all .4s ease;
+}
+.lista-categorias li:hover{
+    background-color: rgb(177, 225, 230);
+}
+.lista-categorias li:hover a{
+    color: #67676b;
 }
