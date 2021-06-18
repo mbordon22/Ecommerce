@@ -1,2 +1,2 @@
-# RetroGames
-Tienda de consolas y juegos Retros
+# Ecommerce
+Tienda de Insumos de computación
