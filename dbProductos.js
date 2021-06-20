@@ -188,6 +188,47 @@ function actualizarProductoSinFoto(producto, cbError, cbDatos){
   })
 }
 
+function actualizarProductoConFoto(producto, cbError, cbDatos){
+  mongoClient.connect(url, middleware, (err, client) => {
+    if (err) {
+      console.log('Hubo un error conectando con el servidor: ' + err);
+      cbError(err);
+      return;
+    }
+
+    // Conecto base de datos y colección
+    const dbEjemploProds = client.db("ProyectoEcommerce");
+    const colProductos = dbEjemploProds.collection("Productos");
+
+    //Realizo el insert
+    colProductos.updateOne({
+      _id: mongo.ObjectId(producto.id)
+    },
+    {
+      $set: {
+        nombre : producto.nombre,
+        precio: producto.precio,
+        categoria: producto.categoria,
+        descripcion : producto.descripcion,
+        foto : producto.foto
+      },
+    }, function (err, datos) {
+
+      // Ya tengo los datos, cierro la conexión.
+      client.close();
+
+      if (err) {
+        console.log("Hubo un error al insertar:", err);
+        cbError(err);
+        return;
+      }
+
+      // Si llegué acá no hubo errores, los retorno al callback de datos
+      cbDatos(datos);
+    });
+  })
+}
+
 /* ----------------------------------------- DELETE --------------------------------- */
 function borrarProducto(id, cbError, cbResultado) {
 
@@ -227,5 +268,6 @@ module.exports = {
   consultarPorId,
   insertarProducto,
   actualizarProductoSinFoto,
+  actualizarProductoConFoto,
   borrarProducto,
 };

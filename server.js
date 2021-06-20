@@ -2,7 +2,10 @@ const express = require('express');
 const expHbs = require("express-handlebars");
 const expSession = require("express-session");
 const multer = require('multer');
-const {v4: uuidv4} = require('uuid');
+const fs = require('fs').promises;
+const {
+    v4: uuidv4
+} = require('uuid');
 const dbProductos = require('./dbProductos.js');
 const dbUsuarios = require('./dbUsuarios.js');
 
@@ -146,6 +149,15 @@ app.get("/producto", (req, res) => {
 
 })
 
+/* Pantalla de CARRITO */
+app.get("/carrito", (req,res) => {
+    res.render("carrito", {
+        titulo: "Carrito",
+        /* productos: productos2.slice(0, 3),
+        tituloProductos: "Todos los Productos" */
+    })
+})
+
 
 /* ------------------------------------------------Pantalla de LOGIN---------------------------------------- */
 app.get("/login", (req, res) => {
@@ -211,26 +223,30 @@ app.post("/cargarProducto", upload.single('imagenProducto'), function (req, res)
     const descripcionProducto = req.body.descripcionProducto;
 
     const producto = {
-        nombre : nombreProducto,
-        precio : precioProducto,
-        categoria : categoriaProducto,
-        foto : imagenProducto,
-        descripcion : descripcionProducto
+        nombre: nombreProducto,
+        precio: precioProducto,
+        categoria: categoriaProducto,
+        foto: imagenProducto,
+        descripcion: descripcionProducto
     }
 
     dbProductos.insertarProducto(
         producto,
         (err) => {
-            res.json({mensaje : "error"});
+            res.json({
+                mensaje: "error"
+            });
         },
         (resultado) => {
-            res.json({mensaje : "exito"});
+            res.json({
+                mensaje: "exito"
+            });
         }
     )
 })
 
 //Peticion de lista de productos cargados en la bd para mostrar al aldministrador 
-app.get("/obtenerProductos", (req, res) =>{
+app.get("/obtenerProductos", (req, res) => {
     if (!req.session.Usuario) {
         res.redirect("/login");
         return;
@@ -238,7 +254,9 @@ app.get("/obtenerProductos", (req, res) =>{
 
     dbProductos.consultarTodos(
         (err) => {
-            res.json({mensje : 'error'});
+            res.json({
+                mensje: 'error'
+            });
         },
         (productos) => {
             productos2 = productos.map(element => {
@@ -248,7 +266,7 @@ app.get("/obtenerProductos", (req, res) =>{
                     nombre: element.nombre,
                     precio: element.precio,
                     foto: element.foto,
-                    descripcion : element.descripcion,
+                    descripcion: element.descripcion,
                 })
             })
 
@@ -270,21 +288,77 @@ app.post("/producto/actualizarSinFoto", (req, res) => {
     const descripcionProducto = req.body.descripcionProducto;
 
     const producto = {
-        id : idProducto,
-        nombre : nombreProducto,
-        precio : precioProducto,
-        categoria : categoriaProducto,
-        descripcion : descripcionProducto
+        id: idProducto,
+        nombre: nombreProducto,
+        precio: precioProducto,
+        categoria: categoriaProducto,
+        descripcion: descripcionProducto
     }
 
     dbProductos.actualizarProductoSinFoto(
         producto,
         (err) => {
             console.log(err);
-            res.json({mensaje: 'error'});
+            res.json({
+                mensaje: 'error'
+            });
         },
         (resultado) => {
-            res.json({mensje : 'exito'});
+            res.json({
+                mensaje: 'exito'
+            });
+        }
+    );
+
+})
+
+//update del producto con foto
+app.post("/producto/actualizarConFoto", upload.single('imagenProducto'), (req, res) => {
+    if (!req.session.Usuario) {
+        res.redirect("/login");
+        return;
+    }
+
+    const idProducto = req.body.idProducto;
+    const nombreProducto = req.body.nombreProducto;
+    const precioProducto = parseInt(req.body.precioProducto);
+    const categoriaProducto = req.body.categoriaProducto;
+    const descripcionProducto = req.body.descripcionProducto;
+    const imagenProducto = req.file.filename;
+    const imagenAnterior = req.body.imagenAnterior;
+
+    const producto = {
+        id: idProducto,
+        nombre: nombreProducto,
+        precio: precioProducto,
+        categoria: categoriaProducto,
+        descripcion: descripcionProducto,
+        foto: imagenProducto,
+    }
+
+    //Eliminamos la imagen vieja
+    fs.unlink(path.join("client/imagenes/", imagenAnterior))
+        .then(() => {
+            console.log("Imagen Eliminada");
+        }).catch((err) => {
+            console.log("Ocurrio un error: " + err);
+        });
+
+
+    //ACTUALIZAMOS LOS DATOS CON LA NUEVA IMAGEN
+    dbProductos.actualizarProductoConFoto(
+        producto,
+        (err) => {
+            console.log(err);
+            res.json({
+                mensaje: 'error'
+            });
+        },
+        (resultado) => {
+            console.log(resultado);
+            res.json({
+                mensaje: 'exito'
+            });
         }
     );
 
@@ -296,7 +370,7 @@ app.get("/producto/delete", (req, res) => {
         res.redirect("/login");
         return;
     }
-    
+
     const id = req.query.id;
     //res.json({mensaje: 'exito'});
 
@@ -304,10 +378,14 @@ app.get("/producto/delete", (req, res) => {
         id,
         (err) => {
             console.log(err);
-            res.json({mensaje: 'error'});
+            res.json({
+                mensaje: 'error'
+            });
         },
         (resultado) => {
-            res.json({mensaje: 'exito'});
+            res.json({
+                mensaje: 'exito'
+            });
         }
     )
 })

@@ -11,11 +11,11 @@
 html {
     scroll-behavior: smooth;
     box-sizing: border-box;
+    position: relative;
 }
 
 body {
     background-color: #fff;
-    position: relative;
     z-index: 1;
     font-family: 'Montserrat', sans-serif;
     background: rgb(224,237,237);
@@ -118,6 +118,11 @@ a:hover{
 }
 
 /*Footer*/
+footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
 .contenedor-redes a i{
     color: #717171;
     font-size: 22px;
@@ -176,4 +181,13 @@ a:hover{
 }
 .lista-categorias li:hover a{
     color: #67676b;
+}
+
+/* Carrito */
+.contenedor-tabla-carrito{
+    width: 95%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

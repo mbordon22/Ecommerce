@@ -8,6 +8,7 @@ const btnReset = document.querySelector("#btnReset");
 const tbodyProductos = document.querySelector("#tbodyProductos");
 const descripcionProducto = document.querySelector("#descripcionProducto");
 const idProducto = document.querySelector("#idProducto");
+const imagenAnterior = document.querySelector("#imagenAnterior");
 
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -83,7 +84,22 @@ function editarProducto(){
         xhr.send(JSON.stringify(data));
     }
     else{
-        //Actualizar con la imagen incluida
+        const data =  new FormData(formProductos);
+        data.set("categoriaProducto", obtenerStringCategoria(categoriaProducto.value)); //Envia la categoria como string
+        const xhr = new XMLHttpRequest();
+
+        xhr.open("POST", "/producto/actualizarConFoto");
+
+        xhr.onload = function(){
+            if(xhr.status === 200){
+                const respuesta = JSON.parse(xhr.responseText);
+                if(respuesta.mensaje === 'exito'){
+                    location.reload();
+                }
+            }
+        }
+        
+        xhr.send(data);
     }
 }
 
@@ -150,6 +166,9 @@ function obtenerListaProductos(){
                     categoriaProducto.value = obtenerIdCategoria(element.categoria);
                     descripcionProducto.value = element.descripcion;
                     idProducto.value = element.id;
+                    imagenAnterior.value = element.foto;
+
+                    nombreProducto.focus();
                 });
 
 
@@ -198,5 +217,3 @@ function resetearFormulario(){
     formProductos.reset();
     tipoOperacion.value = "INSERT";
 }
-
-
