@@ -1,15 +1,22 @@
-<div class="container">
-    <div class="row my-5">
-        <div class="col-12 col-md-4">
-            <img src="imagenes/{{producto.foto}}" alt="">
-        </div>
-        <div class="col-12 col-md-8 pl-md-4">
-            <h4 class="productoNombre">{{producto.nombre}}</h4>
-            <p class="productoPrecio">${{producto.precio}}</p>
-            <p class="productoFinanciacion">{{producto.financiacion}}</p>
-        </div>
-        <div class="col-12 my-3">
-            <p>{{producto.descripcion}}</p>
-        </div>
+<div class="detalles-producto">
+  <div class="contenedor-detalles-producto">
+    <div class="imagen-producto">
+      <img src="imagenes/{{producto.foto}}" alt="" />
     </div>
+    <div class="info-producto">
+      <h4 class="productoNombre">{{producto.nombre}}</h4>
+      <p class="productoPrecio">${{producto.precio}}</p>
+      <p class="productoFinanciacion">{{producto.financiacion}}</p>
+      <div class="botones">
+        <button class="btn btn-primary">Comprar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="descripcion-producto">
+    <h4>Descripcion:</h4>
+    <p>{{producto.descripcion}}</p>
+  </div>
 </div>
+
+<br /><br /><br />

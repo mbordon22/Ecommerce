@@ -29,8 +29,10 @@ function guardarProducto(e){
 }
 
 function insertarProducto(){
-    if(!nombreProducto.value && !categoriaProducto.value && !precioProducto.value){
-        console.log("Error");
+    
+    if(!nombreProducto.value || categoriaProducto.value < 1 || !precioProducto.value){
+        alert("Llenar todos los campos");
+        return;
     }
     else{
         const data =  new FormData(formProductos);
@@ -136,12 +138,20 @@ function obtenerListaProductos(){
             respuesta.forEach(element => {
 
                 const fila = document.createElement("tr");
+                const tdImagen = document.createElement("td");
+                const imagen = document.createElement("img");
                 const tdNombre = document.createElement("td");
                 const tdPrecio = document.createElement("td");
                 const tdCategoria = document.createElement("td");
                 const tdAcciones = document.createElement("td");
                 const btnEditar = document.createElement("button");
                 const btnEliminar = document.createElement("button");
+
+                //Imagen
+                imagen.setAttribute("src","imagenes/"+element.foto);
+                imagen.classList.add("imagen-tabla");
+                tdImagen.appendChild(imagen);
+                fila.appendChild(tdImagen);
 
                 //Nombre
                 tdNombre.innerHTML = element.nombre;
