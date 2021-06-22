@@ -25,11 +25,11 @@
           <div class="row row-cols-1 row-cols-md-3 g-4">
             {{#each productos}}
               <div class="col">
-                <a href="/producto?id={{this.id}}">
+                <a href="/productos/detalleProducto?id={{this.id}}">
                 <div class="card p-2 h-100">
                   <img src="imagenes/{{this.foto}}" class="card-img-top" width="200px" height="250px" alt="..." />
                   <div class="card-body">
-                    <h5 class="card-title text-center precio">{{this.precio}}</h5>
+                    <h5 class="card-title text-center precio">${{this.precio}}</h5>
                     <p class="card-text text-center">{{this.nombre}}</p>
                   </div>
                 </div>

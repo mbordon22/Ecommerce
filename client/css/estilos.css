@@ -152,6 +152,14 @@ footer{
     font-size: 20px;
 }
 
+.card img{
+    transition: all .3s ease;
+}
+
+.card img:hover{
+    transform: scale(1.05);
+}
+
 .card .descuento{
     color: rgb(7, 211, 7);
     font-weight: bold;
@@ -188,9 +196,6 @@ footer{
     width: 95%;
     max-width: 1000px;
     margin: 0 auto;
-   /*  background-color: #fff;
-    padding: 15px;
-    border: 5px; */
 }
 .contenedor-detalles-producto{
     display: flex;
@@ -204,6 +209,11 @@ footer{
     padding: 15px;
     background-color: #fff;
     border-radius: 10px;
+    transition: all .3s ease;
+    
+}
+.contenedor-detalles-producto .imagen-producto:hover{
+    transform: scale(1.1);
 }
 
 .contenedor-detalles-producto .info-producto{
@@ -230,6 +240,12 @@ footer{
     .contenedor-detalles-producto .info-producto{
         flex: 0 0 calc(50% - 20px);
     }
+}
+
+.productoPrecio{
+    font-size: 20px;
+    color: red;
+    font-weight: bold;
 }
 
 /* Carrito */

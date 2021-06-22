@@ -169,7 +169,8 @@ function actualizarProductoSinFoto(producto, cbError, cbDatos){
         nombre : producto.nombre,
         precio: producto.precio,
         categoria: producto.categoria,
-        descripcion : producto.descripcion
+        descripcion : producto.descripcion,
+        cantidad : producto.cantidad
       },
     }, function (err, datos) {
 
@@ -210,7 +211,8 @@ function actualizarProductoConFoto(producto, cbError, cbDatos){
         precio: producto.precio,
         categoria: producto.categoria,
         descripcion : producto.descripcion,
-        foto : producto.foto
+        foto : producto.foto,
+        cantidad : producto.cantidad
       },
     }, function (err, datos) {
 

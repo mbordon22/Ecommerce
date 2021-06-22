@@ -24,7 +24,7 @@ formLogin.addEventListener("submit", (e) => {
 
                 const mensajeError = document.querySelector("#mensajeError");
                 if(respuesta.respuesta === "exito"){
-                    window.location.href = "/administrarProductos";
+                    window.location.href = "/adminProductos";
                     
                 } else {
                     mensajeError.textContent = "Usuario o Clave incorrectos";

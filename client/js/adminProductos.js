@@ -9,6 +9,7 @@ const tbodyProductos = document.querySelector("#tbodyProductos");
 const descripcionProducto = document.querySelector("#descripcionProducto");
 const idProducto = document.querySelector("#idProducto");
 const imagenAnterior = document.querySelector("#imagenAnterior");
+const cantidadProducto = document.querySelector("#cantidadProducto");
 
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -40,7 +41,7 @@ function insertarProducto(){
 
         const xhr = new XMLHttpRequest();
 
-        xhr.open("POST", "/cargarProducto");
+        xhr.open("POST", "/adminProductos/cargarProducto");
 
         xhr.onload = function(){
             if(xhr.status === 200){
@@ -64,13 +65,14 @@ function editarProducto(){
             idProducto : idProducto.value,
             nombreProducto : nombreProducto.value,
             precioProducto: precioProducto.value,
+            cantidadProducto : cantidadProducto.value,
             categoriaProducto : obtenerStringCategoria(categoriaProducto.value),
             descripcionProducto : descripcionProducto.value
         }
 
         const xhr = new XMLHttpRequest();
 
-        xhr.open("POST", "/producto/actualizarSinFoto");
+        xhr.open("POST", "/adminProductos/actualizarSinFoto");
 
         xhr.onload = function(){
             if(xhr.status === 200){
@@ -85,12 +87,14 @@ function editarProducto(){
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify(data));
     }
+    //Si actualiza la imagen
     else{
+
         const data =  new FormData(formProductos);
         data.set("categoriaProducto", obtenerStringCategoria(categoriaProducto.value)); //Envia la categoria como string
         const xhr = new XMLHttpRequest();
 
-        xhr.open("POST", "/producto/actualizarConFoto");
+        xhr.open("POST", "/adminProductos/actualizarConFoto");
 
         xhr.onload = function(){
             if(xhr.status === 200){
@@ -107,12 +111,13 @@ function editarProducto(){
 
 function eliminarProducto(e){
     const id = e.target.getAttribute("data-id");
+    const imagenCargada = e.target.getAttribute("data-img");
     const confirmacion = confirm("Va a eliminar un producto, ¿Confirmar?");
 
     if(confirmacion){
         const xhr = new XMLHttpRequest();
 
-        xhr.open("GET","/producto/delete?id="+id);
+        xhr.open("GET","/adminProductos/delete?id="+id+"&img="+imagenCargada);
 
         xhr.onload = function(){
             if(xhr.status === 200){
@@ -129,7 +134,7 @@ function eliminarProducto(e){
 function obtenerListaProductos(){
     const xhr = new XMLHttpRequest();
 
-    xhr.open('GET','/obtenerProductos');
+    xhr.open('GET','/adminProductos/obtenerProductos');
 
     xhr.onload = function(){
         if(xhr.status == 200) {
@@ -143,6 +148,7 @@ function obtenerListaProductos(){
                 const tdNombre = document.createElement("td");
                 const tdPrecio = document.createElement("td");
                 const tdCategoria = document.createElement("td");
+                const tdCantidad = document.createElement("td");
                 const tdAcciones = document.createElement("td");
                 const btnEditar = document.createElement("button");
                 const btnEliminar = document.createElement("button");
@@ -165,6 +171,10 @@ function obtenerListaProductos(){
                 tdCategoria.innerHTML = element.categoria;
                 fila.appendChild(tdCategoria);
 
+                //Cantidad
+                tdCantidad.innerHTML = element.cantidad;
+                fila.appendChild(tdCantidad);
+
                 //Acciones
                 btnEditar.classList.add("btn","btn-primary","mr-md-2");
                 btnEditar.textContent = "Editar";
@@ -177,6 +187,7 @@ function obtenerListaProductos(){
                     descripcionProducto.value = element.descripcion;
                     idProducto.value = element.id;
                     imagenAnterior.value = element.foto;
+                    cantidadProducto.value = element.cantidad;
 
                     nombreProducto.focus();
                 });
@@ -185,6 +196,7 @@ function obtenerListaProductos(){
                 btnEliminar.classList.add("btn","btn-danger","mt-2","mt-md-0","ml-md-2");
                 btnEliminar.textContent = "Eliminar";
                 btnEliminar.setAttribute("data-id",element.id);
+                btnEliminar.setAttribute("data-img",element.foto);
                 btnEliminar.addEventListener('click', eliminarProducto);    //Le agrego la funcion al boton para poder eliminar el producto
                 
                 tdAcciones.appendChild(btnEditar);
