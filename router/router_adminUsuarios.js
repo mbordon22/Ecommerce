@@ -49,7 +49,7 @@ router.post("/cargarUsuario", function (req, res) {
 })
 
 
-//Peticion de lista de productos cargados en la bd para mostrar al aldministrador 
+//Peticion de lista de usuarios cargados en la bd para mostrar al aldministrador 
 router.get("/obtenerUsuarios", (req, res) => {
     if (!req.session.Usuario || req.session.Rol !== 'Administrador') {
         res.redirect("/adminProductos");
@@ -62,8 +62,8 @@ router.get("/obtenerUsuarios", (req, res) => {
                 mensje: 'error'
             });
         },
-        (productos) => {
-            productos2 = productos.map(element => {
+        (usuarios) => {
+            usuarios2 = usuarios.map(element => {
                 return ({
                     id: element._id.toString(),
                     nombre: element.nombre,
@@ -72,12 +72,12 @@ router.get("/obtenerUsuarios", (req, res) => {
                 })
             })
 
-            res.json(productos2);
+            res.json(usuarios2);
         }
     )
 })
 
-//update del producto sin foto
+//update del usuario
 router.post("/actualizarUsuario", (req, res) => {
     if (!req.session.Usuario || req.session.Rol !== 'Administrador') {
         res.redirect("/adminProductos");
@@ -115,7 +115,7 @@ router.post("/actualizarUsuario", (req, res) => {
 })
 
 
-//Delete del producto
+//Delete del usuario
 router.get("/delete", (req, res) => {
     if (!req.session.Usuario || req.session.Rol !== 'Administrador') {
         res.redirect("/adminProductos");

@@ -252,6 +252,8 @@ footer{
 .contenedor-tabla-carrito{
     width: 95%;
     max-width: 1000px;
+    margin: 0 auto;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
