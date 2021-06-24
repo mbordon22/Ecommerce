@@ -3,4 +3,4 @@
 La idea fue crear una ecommerce donde el administrador pueda cargar, editar y eliminar productos, como así tambien poder crear mas administradores.
 ___
 
-**[web demo]**(https://tecnogamer.herokuapp.com/)
+[web demo](https://tecnogamer.herokuapp.com/)
