@@ -1,11 +1,10 @@
 const express = require('express');
 const expHbs = require("express-handlebars");
 const expSession = require("express-session");
-
+require('dotenv').config({path: 'variables.env'});
 const dbProductos = require('./dbProductos.js');
 
 const path = require('path');
-const PUERTO = 3000;
 const app = express();
 
 
@@ -93,13 +92,13 @@ app.use("/adminUsuarios", routerAdminUsuarios);
 app.get("/carrito", (req,res) => {
     res.render("carrito", {
         titulo: "Carrito",
-        /* productos: productos2.slice(0, 3),
-        tituloProductos: "Todos los Productos" */
     })
 })
 
+//Leer variables de localhost y puerto
+const host = process.env.HOST || '0.0.0.0';
+const port = process.env.PORT || 3000;
 
-
-app.listen(PUERTO, () => {
-    console.log("Escuchando puerto " + PUERTO);
+app.listen(port, host, () => {
+    console.log("Escuchando puerto " + port);
 })

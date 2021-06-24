@@ -1,13 +1,13 @@
 const mongo = require('mongodb');
 const mongoClient = mongo.MongoClient;
 
-const url = "mongodb+srv://mbordon22:Maximiliano41384334@cluster0.cy3xo.mongodb.net/test";
+require('dotenv').config({path: 'variables.env'});
 
 
 //Trae un solo usuario para el login
 function TraerUsuario(usuario, pass, cbErr, cbProducto) {
   // Conexión. Función asincrónica. Recibe por callback error o cliente.
-  mongoClient.connect(url, function (err, client) {
+  mongoClient.connect(process.env.BD_URL, function (err, client) {
     if (err) {
       console.log("Hubo un error conectando con el servidor:", err);
       // Si hay error lo retorno al callback de error y termino la función.
@@ -40,7 +40,7 @@ function TraerUsuario(usuario, pass, cbErr, cbProducto) {
 function consultarTodos(cbError, cbDatos) {
 
   // Conexión. Función asincrónica. Recibe por callback error o cliente.
-  mongoClient.connect(url, function (err, client) {
+  mongoClient.connect(process.env.BD_URL, function (err, client) {
 
     if (err) {
       console.log("Hubo un error conectando con el servidor:", err);
@@ -75,7 +75,7 @@ function consultarTodos(cbError, cbDatos) {
 
 //INSERT DE UN USUARIO
 function insertarUsuario(usuario, cbError, cbDatos) {
-  mongoClient.connect(url, (err, client) => {
+  mongoClient.connect(process.env.BD_URL, (err, client) => {
     if (err) {
       console.log('Hubo un error conectando con el servidor: ' + err);
       cbError(err);
@@ -106,7 +106,7 @@ function insertarUsuario(usuario, cbError, cbDatos) {
 
 //UPDATE DE UN USUARIO
 function actualizarUsuario(usuario, cbError, cbDatos){
-  mongoClient.connect(url, (err, client) => {
+  mongoClient.connect(process.env.BD_URL, (err, client) => {
     if (err) {
       console.log('Hubo un error conectando con el servidor: ' + err);
       cbError(err);
@@ -148,7 +148,7 @@ function actualizarUsuario(usuario, cbError, cbDatos){
 //DELETE DE UN USUARIO
 function borrarUsuario(id, cbError, cbResultado) {
 
-  mongoClient.connect(url, function (err, client) {
+  mongoClient.connect(process.env.BD_URL, function (err, client) {
 
     if (err) {
       console.log("Hubo un error conectando con el servidor:", err);

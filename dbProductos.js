@@ -3,7 +3,7 @@ const mongoClient = mongo.MongoClient;
 
 const middleware = { useUnifiedTopology: true };
 
-const url = "mongodb+srv://mbordon22:Maximiliano41384334@cluster0.cy3xo.mongodb.net/test";
+require('dotenv').config({path: 'variables.env'});
 
 
 /* ------------------------------------------ CONSULTA --------------------------------- */
@@ -11,7 +11,7 @@ const url = "mongodb+srv://mbordon22:Maximiliano41384334@cluster0.cy3xo.mongodb.
 function consultarTodos(cbError, cbDatos) {
 
   // Conexión. Función asincrónica. Recibe por callback error o cliente.
-  mongoClient.connect(url, middleware,function (err, client) {
+  mongoClient.connect(process.env.BD_URL, middleware,function (err, client) {
 
     if (err) {
       console.log("Hubo un error conectando con el servidor:", err);
@@ -47,7 +47,7 @@ function consultarTodos(cbError, cbDatos) {
 function consultarPorCategoria(categoria, cbError, cbDatos) {
 
   // Conexión. Función asincrónica. Recibe por callback error o cliente.
-  mongoClient.connect(url, middleware, function (err, client) {
+  mongoClient.connect(process.env.BD_URL, middleware, function (err, client) {
 
     if (err) {
       console.log("Hubo un error conectando con el servidor:", err);
@@ -84,7 +84,7 @@ function consultarPorCategoria(categoria, cbError, cbDatos) {
 
 function consultarPorId(id, cbErr, cbProducto) {
   // Conexión. Función asincrónica. Recibe por callback error o cliente.
-  mongoClient.connect(url, middleware, function (err, client) {
+  mongoClient.connect(process.env.BD_URL, middleware, function (err, client) {
     if (err) {
       console.log("Hubo un error conectando con el servidor:", err);
       // Si hay error lo retorno al callback de error y termino la función.
@@ -118,7 +118,7 @@ function consultarPorId(id, cbErr, cbProducto) {
 
 /* --------------------------------------- INSERT ------------------------------- */
 function insertarProducto(producto, cbError, cbDatos) {
-  mongoClient.connect(url, middleware, (err, client) => {
+  mongoClient.connect(process.env.BD_URL, middleware, (err, client) => {
     if (err) {
       console.log('Hubo un error conectando con el servidor: ' + err);
       cbError(err);
@@ -149,7 +149,7 @@ function insertarProducto(producto, cbError, cbDatos) {
 
 /*------------------------------------------ UPDATE --------------------------------------*/
 function actualizarProductoSinFoto(producto, cbError, cbDatos){
-  mongoClient.connect(url, middleware, (err, client) => {
+  mongoClient.connect(process.env.BD_URL, middleware, (err, client) => {
     if (err) {
       console.log('Hubo un error conectando con el servidor: ' + err);
       cbError(err);
@@ -190,7 +190,7 @@ function actualizarProductoSinFoto(producto, cbError, cbDatos){
 }
 
 function actualizarProductoConFoto(producto, cbError, cbDatos){
-  mongoClient.connect(url, middleware, (err, client) => {
+  mongoClient.connect(process.env.BD_URL, middleware, (err, client) => {
     if (err) {
       console.log('Hubo un error conectando con el servidor: ' + err);
       cbError(err);
@@ -234,7 +234,7 @@ function actualizarProductoConFoto(producto, cbError, cbDatos){
 /* ----------------------------------------- DELETE --------------------------------- */
 function borrarProducto(id, cbError, cbResultado) {
 
-  mongoClient.connect(url, middleware, function (err, client) {
+  mongoClient.connect(process.env.BD_URL, middleware, function (err, client) {
 
     if (err) {
       console.log("Hubo un error conectando con el servidor:", err);
